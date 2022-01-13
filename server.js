@@ -1,6 +1,11 @@
 const app = require('./app');
-const port = 4000;
+const config = require('./config');
 
-app.listen(port, ()=>{
-  console.log(`Server up in port: ${port}`);
-})
+const server = app.listen(config.port, ()=>{
+  console.log(`App listening at http://localhost:${config.port}`);
+});
+
+process.on('unhandledRejection',(err,promise)=>{
+  console.log('Error',err.message);
+  server.close(()=>process.exit(1));
+});
