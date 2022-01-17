@@ -12,9 +12,9 @@ const users = (app)=>{
     res.status(200).json(result);
   });
 
-  router.post('/',async (req,res)=>{
-    const data = req.body;
-    const result = await userService.getUser(data);
+  router.get('/:id',async (req,res)=>{
+    const _id=req.params.id;
+    const result = await userService.getUser({_id});
     res.status(200).json(result);
   });
 

@@ -6,8 +6,8 @@ class Users {
     return users;
   };
 
-  async getUser({username,email}){
-    const user = await UserModel.findOne(username?{username}:{email}).exec();
+  async getUser({username,email,_id}){
+    const user = await UserModel.findOne(username?{username}:email?{email}:{_id}).exec();
     return user;
   };
 
