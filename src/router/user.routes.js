@@ -1,6 +1,6 @@
 const express = require('express');
 const {newUserValidation, userUpdateValidation } = require('../middleware/userValidation');
-const Users = require("../services/user.service");
+const Users = require("../services/users.service");
 
 const users = (app)=>{
   const router = express.Router();

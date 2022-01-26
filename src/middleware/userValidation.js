@@ -1,5 +1,5 @@
 const { userSchemaJoi } = require("../schemas/users.schema");
-const Users = require("../services/user.service");
+const Users = require("../services/users.service");
 
 const validateUser = async (isFullValidation,req,res,next) =>{
     const userValidation= userSchemaJoi.validate(req.body);

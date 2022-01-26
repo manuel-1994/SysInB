@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const chai = require("chai");
 const chaiHTTP = require("chai-http");
-const UserModel = require('../src/models/user.model');
+const UserModel = require('../src/models/users.model');
 const app = require("../src/app");
 
 //assertion style
