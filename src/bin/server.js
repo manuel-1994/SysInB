@@ -1,5 +1,5 @@
-const app = require('./app');
-const config = require('./config');
+const app = require('../app');
+const config = require('../config');
 
 const server = app.listen(config.port, ()=>{
   console.log(`App listening at http://localhost:${config.port}`);

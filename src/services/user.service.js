@@ -23,7 +23,7 @@ class Users {
 
   async deleteUser(id){
     const userDelete = await UserModel.findByIdAndDelete(id);
-    return userDelete;
+    return {data:userDelete, success:true, message: 'Usuario eliminado exitosamente'}
   };
 }
 

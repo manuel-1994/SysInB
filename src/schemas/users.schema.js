@@ -1,16 +1,4 @@
 const Joi = require('joi')
-const {mongoose} = require('../config/db'); 
-const {Schema} = mongoose;
-
-const userSchema = new Schema({
-  username: String,
-  email: String,
-  password: String,
-  rol: {
-    type: String,
-    default: 'regular'
-  }
-});
 
 const userSchemaJoi = Joi.object({
   username: Joi.string().required().max(30).message('Maximo 30 caracteres'),
@@ -19,6 +7,5 @@ const userSchemaJoi = Joi.object({
 });
 
 module.exports = {
-  userSchema,
   userSchemaJoi
 };

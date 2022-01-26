@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const { dbUsername, dbPassword, dbHost } = require('./');
+const config = require('.');
 
-const uri = `mongodb+srv://${dbUsername}:${dbPassword}@${dbHost}/SysInB`;
+const uri = `${config.dbUri}/${config.test?"test":"SysInB"}`;
 
 const connection = async ()=>{
   const conn = await mongoose.connect(uri);

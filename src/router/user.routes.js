@@ -21,7 +21,7 @@ const users = (app)=>{
   router.post('/',newUserValidation, async (req,res)=>{
     const data = req.body;
     const result = await userService.createUser(data);
-    return res.status(200).json(result);
+    return res.status(201).json(result);
   });
 
   router.put('/:id',userUpdateValidation, async (req,res)=>{
