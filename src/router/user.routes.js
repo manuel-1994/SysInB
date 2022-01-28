@@ -1,5 +1,7 @@
 const express = require('express');
-const {newUserValidation, userUpdateValidation } = require('../middleware/userValidation');
+const validateUser = require('../middleware/userValidation');
+const validateData = require('../middleware/validateData');
+const {userSchemaJoi} = require('../schemas/users.schema')
 const Users = require("../services/users.service");
 
 const users = (app)=>{
@@ -18,13 +20,12 @@ const users = (app)=>{
     res.status(200).json(result);
   });
 
-  router.post('/',newUserValidation, async (req,res)=>{
+  router.post('/',validateData(userSchemaJoi),validateUser, async (req,res)=>{
     const data = req.body;
     const result = await userService.createUser(data);
     return res.status(201).json(result);
   });
-
-  router.put('/:id',userUpdateValidation, async (req,res)=>{
+  router.put('/:id',validateData(userSchemaJoi), async (req,res)=>{
     const id = req.params.id;
     const data = req.body;
     const result = await userService.updateUser(id,data);
