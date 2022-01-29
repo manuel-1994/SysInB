@@ -30,7 +30,7 @@ describe('Users service',()=>{
         id = user.body.data._id
     })
 
-    it('it should NOT POST for create a user', async ()=>{
+    it('it should NOT create a user by existing user error', async ()=>{
         const user = await chai.request(app).post('/api/users').send({
           username: "admin10",
           email: "admin18@gmail.com",
@@ -40,6 +40,17 @@ describe('Users service',()=>{
         user.body.should.be.a('object')
         user.body.message.should.be.eql('El nombre de usuario ya existe')
   })
+
+  it('it should NOT create a user by existing email error', async ()=>{
+    const user = await chai.request(app).post('/api/users').send({
+      username: "admin18",
+      email: "admin18@gmail.com",
+      password: "admin123123",
+    })
+    user.should.have.status(400)
+    user.body.should.be.a('object')
+    user.body.message.should.be.eql('El email ya existe')
+})
   })
 
   //test the GET router

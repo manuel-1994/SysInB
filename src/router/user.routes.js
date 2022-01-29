@@ -1,7 +1,5 @@
 const express = require('express');
-const validateUser = require('../middleware/userValidation');
-const validateData = require('../middleware/validateData');
-const {userSchemaJoi} = require('../schemas/users.schema')
+const { validateData, validateUsername, validateEmail } = require('../middleware');
 const Users = require("../services/users.service");
 
 const users = (app)=>{
@@ -20,12 +18,12 @@ const users = (app)=>{
     res.status(200).json(result);
   });
 
-  router.post('/',validateData(userSchemaJoi),validateUser, async (req,res)=>{
+  router.post('/',validateData.user,validateUsername,validateEmail.user, async (req,res)=>{
     const data = req.body;
     const result = await userService.createUser(data);
     return res.status(201).json(result);
   });
-  router.put('/:id',validateData(userSchemaJoi), async (req,res)=>{
+  router.put('/:id',validateData.user, async (req,res)=>{
     const id = req.params.id;
     const data = req.body;
     const result = await userService.updateUser(id,data);
