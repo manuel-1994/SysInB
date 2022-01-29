@@ -1,4 +1,5 @@
-const {userSchemaJoi} = require('../schemas/users.schema')
+const { usersSchemaJoi, clientsSchemaJoi } = require("../schemas");
+
 const validateData = (data,req,res,next) =>{
     const validateData = data.validate(req.body);
     if(validateData.error){
@@ -9,12 +10,12 @@ const validateData = (data,req,res,next) =>{
     };
     return next();
 }
-
 const user = (req,res,next) =>{
-  validateData(userSchemaJoi, req,res,next)
+  validateData(usersSchemaJoi, req,res,next)
 }
 
 const client = (req,res,next) =>{
+  validateData(clientsSchemaJoi, req,res,next)
 }
 
 const provider = (req,res,next) =>{

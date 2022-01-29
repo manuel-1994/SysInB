@@ -1,5 +1,7 @@
-const users = require("./user.routes");
+const clients = require("./clients.routes");
+const users = require("./users.routes");
 
 module.exports = {
-  users
+  users,
+  clients
 };

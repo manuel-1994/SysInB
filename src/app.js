@@ -1,8 +1,7 @@
 const express = require('express');
 const cookie = require('cookie-parser');
 const { connection } = require('./config/db');
-const { users } = require('./router');
-const clients = require('./router/clients.routes');
+const { users, clients } = require('./router');
 const app = express();
 
 //middleware
