@@ -1,4 +1,4 @@
-const { usersSchemaJoi, clientsSchemaJoi } = require("../schemas");
+const { usersSchemaJoi, clientsSchemaJoi, providersSchemaJoi } = require("../schemas");
 
 const validateData = (data,req,res,next) =>{
     const validateData = data.validate(req.body);
@@ -19,6 +19,7 @@ const client = (req,res,next) =>{
 }
 
 const provider = (req,res,next) =>{
+  validateData(providersSchemaJoi, req,res,next)
 }
 
 module.exports = {
