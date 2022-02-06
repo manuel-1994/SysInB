@@ -1,29 +1,25 @@
-const { usersSchemaJoi, clientsSchemaJoi, providersSchemaJoi } = require("../schemas");
+const { 
+  usersSchemaJoi, 
+  clientsSchemaJoi, 
+  providersSchemaJoi, 
+  productsSchemaJoi 
+} = require("../schemas");
+
+const methods = {
+  user: (req,res,next) => validateData(usersSchemaJoi, req,res,next),
+  client:(req,res,next) =>validateData(clientsSchemaJoi, req,res,next),
+  provider: (req,res,next) =>validateData(providersSchemaJoi, req,res,next),
+  product: (req,res,next) =>validateData(productsSchemaJoi, req, res, next)
+}
 
 const validateData = (data,req,res,next) =>{
     const validateData = data.validate(req.body);
     if(validateData.error){
       return res.status(400).json({
-        data:validateData.value, 
         success:false, 
         message: validateData.error.details[0].message});
     };
     return next();
 }
-const user = (req,res,next) =>{
-  validateData(usersSchemaJoi, req,res,next)
-}
 
-const client = (req,res,next) =>{
-  validateData(clientsSchemaJoi, req,res,next)
-}
-
-const provider = (req,res,next) =>{
-  validateData(providersSchemaJoi, req,res,next)
-}
-
-module.exports = {
-  user,
-  client,
-  provider
-}
+module.exports = methods;

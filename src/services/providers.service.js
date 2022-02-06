@@ -1,21 +1,21 @@
 const ProvidersModel = require("../models/providers.model");
 
 class Providers{
-  async getAllProviders(){
+  async getAllData(){
     return await ProvidersModel.find()
   }
-  async getProvider({email, _id}){
+  async getData({email, _id}){
     return await ProvidersModel.findOne(email?{email}:{_id})
   }
-  async createProvider(data){
+  async createData(data){
     const newProvider = await ProvidersModel.create(data)
     return {data:newProvider, success:true, message: "Proveedor creado exitosamente"}
   }
-  async updateProvider(id,data){
+  async updateData(id,data){
     const updateProvider = await ProvidersModel.findByIdAndUpdate(id,data,{new:true})
     return {data:updateProvider, success:true, message: "Proveedor actualizado exitosamente"}
   }
-  async deleteProvider(id){
+  async deleteData(id){
     const deleteProvider = await ProvidersModel.findByIdAndDelete(id)
     return {data: deleteProvider, success:true, message: "Proveedor eliminado exitosamente"}
   }

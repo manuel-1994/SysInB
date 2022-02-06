@@ -9,7 +9,7 @@ chai.should()
 chai.use(chaiHTTP);
 
 before('Clients', async ()=>{
-  await ClientsModel.remove({})
+      await ClientsModel.remove({})
 })
 
 describe('Clients service',()=>{
