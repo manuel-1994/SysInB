@@ -1,9 +1,12 @@
 const validateData = require("./validateData");
 const validateEmail = require("./validateEmail");
-const validateUsername = require("./validateUsername");
+const validateProduct = require("./validateProduct");
+const validateUser= require("./validateUser");
+
 
 module.exports={
   validateData,
   validateEmail,
-  validateUsername
+  validateUser,
+  validateProduct
 }
