@@ -1,15 +1,10 @@
-const { 
-  usersSchemaJoi, 
-  clientsSchemaJoi, 
-  providersSchemaJoi, 
-  productsSchemaJoi 
-} = require("../schemas");
+const {users,clients,providers,products} = require("../libs/joi");
 
 const methods = {
-  user: (req,res,next) => validateData(usersSchemaJoi, req,res,next),
-  client:(req,res,next) =>validateData(clientsSchemaJoi, req,res,next),
-  provider: (req,res,next) =>validateData(providersSchemaJoi, req,res,next),
-  product: (req,res,next) =>validateData(productsSchemaJoi, req, res, next)
+  user: (req,res,next) => validateData(users, req,res,next),
+  client:(req,res,next) =>validateData(clients, req,res,next),
+  provider: (req,res,next) =>validateData(providers, req,res,next),
+  product: (req,res,next) =>validateData(products, req, res, next)
 }
 
 const validateData = (data,req,res,next) =>{
