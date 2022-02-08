@@ -12,8 +12,8 @@ class Auth{
     if(user && user.password === password){
       const token = this.#tokenGenerate(user);
       const data = user.toObject();
-      delete user.password;
-      delete user.__v;
+      delete data.password;
+      delete data.__v;
       return {data,token,success:true,}
     }
 
